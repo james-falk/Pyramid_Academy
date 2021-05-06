@@ -7,4 +7,6 @@ public class Carrier extends Ship{
     setSize(5);
     }
 
+    public static Carrier p1Carrier = new Carrier();
+    public static Carrier p2Carrier = new Carrier();
 }

@@ -19,42 +19,48 @@ public class Main {
         // 1st Prompt
         System.out.println("Hello, welcome to Battleship");
         System.out.println("Enter Player 1 name: ");
-        Player player1 = new Player();
-        player1.setName(scan.next());
+        Player.player1.setName(scan.nextLine());        //Set player 1 name
+        Player.player1.setPlayerNum(1);                 // Set player 1 playerNum to 1
         System.out.println("Enter player 2 name: ");
-        Player player2 = new Player();
-        player2.setName(scan.next());
+        Player.player2.setName(scan.nextLine());        // Set player 2 name
+        Player.player2.setPlayerNum(2);                 // Set player 2 playerNum to 2
+        System.out.println();
+        System.out.println("In this game of Battleship your ships will be shown on the game board with letters corresponding to their names.");
+        System.out.println("Carrier: C");
+        System.out.println("Battleship: B");
+        System.out.println("Destroyer: D ");
+        System.out.println("Submarine: S ");
+        System.out.println("Patrol Boat: P ");
+        System.out.println();
 
-        System.out.println(player1.getName());
-        System.out.println(player2.getName());
 
         // 2nd Prompt
         // Set ships for player 1
 //        Board.displayBoard(player1Board.gameBoard);
-        System.out.println(player1.getName() + ", please enter the coordinates for your carrier ships.");
-        Carrier p1Carrier = new Carrier();   // Set carrier ship
-        Board.placeShip(p1Carrier, player1Board,player1);
-        Battle p1Battle = new Battle();      // Set battleship
-        Board.placeShip(p1Battle, player1Board,player1);
-        Destroyer p1Destroyer = new Destroyer();  // Set destroyer
-        Board.placeShip(p1Destroyer,player1Board,player1);
-        Submarine p1Submarine = new Submarine(); // Set submarine
-        Board.placeShip(p1Submarine, player1Board,player1);
-        PatrolBoat p1PatrolBoat = new PatrolBoat();  // Set PatrolBoat
-        Board.placeShip(p1PatrolBoat,player1Board,player1);
+        System.out.println(Player.player1.getName() + ", please enter the coordinates for your carrier ships.");
+        // Set carrier ship
+        Board.placeShip(Carrier.p1Carrier, player1Board,Player.player1);
+        // Set battleship
+        Board.placeShip(Battle.p1Battle, player1Board,Player.player1);
+        // Set destroyer
+        Board.placeShip(Destroyer.p1Destroyer,player1Board,Player.player1);
+        // Set submarine
+        Board.placeShip(Submarine.p1Submarine, player1Board,Player.player1);
+        // Set PatrolBoat
+        Board.placeShip(PatrolBoat.p1PatrolBoat,player1Board,Player.player1);
 
         // Set ships for payer 2
-        System.out.println(player2.getName() + ", please enter the coordinates for your carrier ships.");
-        Carrier p2Carrier = new Carrier();   // Set carrier ship
-        Board.placeShip(p2Carrier, player2Board,player2);
-        Battle p2Battle = new Battle();      // Set battleship
-        Board.placeShip(p2Battle, player2Board,player2);
-        Destroyer p2Destroyer = new Destroyer();  // Set destroyer
-        Board.placeShip(p2Destroyer,player2Board,player2);
-        Submarine p2Submarine = new Submarine(); // Set submarine
-        Board.placeShip(p2Submarine, player2Board,player2);
-        PatrolBoat p2PatrolBoat = new PatrolBoat();  // Set PatrolBoat
-        Board.placeShip(p2PatrolBoat,player2Board,player2);
+        System.out.println(Player.player2.getName() + ", please enter the coordinates for your carrier ships.");
+        // Set carrier ship
+        Board.placeShip(Carrier.p2Carrier, player2Board,Player.player2);
+        // Set battleship
+        Board.placeShip(Battle.p2Battle, player2Board,Player.player2);
+        // Set destroyer
+        Board.placeShip(Destroyer.p2Destroyer,player2Board,Player.player2);
+        // Set submarine
+        Board.placeShip(Submarine.p2Submarine, player2Board,Player.player2);
+        // Set PatrolBoat
+        Board.placeShip(PatrolBoat.p2PatrolBoat,player2Board,Player.player2);
 
         // Gameplay prompt
 
@@ -62,6 +68,21 @@ public class Main {
         Board p1Attack = new Board();
         Board p2Attack = new Board();
 
+        while(Player.player1.getShips() != 0 && Player.player2.getShips() != 0){
+
+            //Player 1 attack
+            Board.attack(p1Attack, player2Board, Player.player1, Player.player2);
+            if(Player.player2.getShips() == 0) break;
+
+            //Player 2 attack
+            Board.attack(p2Attack, player1Board, Player.player2, Player.player1);
+            if(Player.player1.getShips() == 0) break;
+
+
+
+
+
+        }
 
 
 

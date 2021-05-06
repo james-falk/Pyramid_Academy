@@ -6,4 +6,7 @@ public class Destroyer extends Ship{
         setName("Destroyer");
         setSize(3);
     }
+
+    public static Destroyer p1Destroyer = new Destroyer();
+    public static Destroyer p2Destroyer = new Destroyer();
 }

@@ -6,4 +6,6 @@ public class PatrolBoat extends Ship{
         setName("Patrol Boat");
         setSize(1);
     }
+    public static PatrolBoat p1PatrolBoat = new PatrolBoat();
+    public static PatrolBoat p2PatrolBoat = new PatrolBoat();
 }
