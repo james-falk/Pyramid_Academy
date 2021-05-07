@@ -221,9 +221,9 @@ public class Board {
     }
 
     public static void attack(Board attackBoard, Board shipBoard, Player attackingPlayer, Player defendingPlayer){
-
         do{
             System.out.println(attackingPlayer.getName() + ", enter the coordinates for an attack: ");
+
             String point = Main.scan.next();
             String[] pointStr = point.split("");
             int x = Integer.parseInt(pointStr[1]);
