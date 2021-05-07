@@ -10,6 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
         // write your code here
+        Scanner scan = new Scanner(System.in);
         String playAgain = "yes";
         do {
             playerPositions = new ArrayList<>();
@@ -19,11 +20,16 @@ public class Main {
                     {' ', '|', ' ', '|', ' '}};
 
 
-            Scanner scan = new Scanner(System.in);
+
             Random rand = new Random();                     //Create random generator for computer moves
             System.out.println("Welcome to Tic-Tac-Toe!");
             System.out.println("Would you like to be X or 0?");
-            char playerLetter = scan.next().charAt(0);                                       //Get X or O from user
+                char playerLetter = ' ';
+                try {
+                    playerLetter = scan.next().charAt(0);                                       //Get X or O from user
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
 
             System.out.println("The computer will go first.");
             int compFirstMove = rand.nextInt(9) + 1;                                   //Let computer go first
@@ -32,7 +38,13 @@ public class Main {
 
             while (true) {
                 System.out.println("What is your next move? (1-9)");
-                int playerPosition = scan.nextInt();                                   //Get next move from user
+                int playerPosition = 0;
+                try {
+                    playerPosition = scan.nextInt();                                   //Get next move from user
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+
 
                 while (playerPositions.contains(playerPosition) || computerPositions.contains(playerPosition)) {
                     System.out.println("This move is already used. Enter an empty position.");
@@ -63,9 +75,16 @@ public class Main {
                 }
             }
             System.out.println("Do you want to play again? (yes or no)");
-            playAgain = scan.next();
-        } while (playAgain.equalsIgnoreCase("yes"));
 
+
+            try {
+                playAgain = scan.next();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+
+        } while (playAgain.equalsIgnoreCase("yes"));
+        scan.close();
     }
 
     public static void printGameBoard(char[][] gameBoard) {
