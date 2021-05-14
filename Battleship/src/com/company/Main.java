@@ -12,13 +12,9 @@ public class Main {
         Board player1Board = new Board();
         Board player2Board = new Board();
 
-        Board.displayBoard(player2Board.gameBoard);
-
+//        Board.displayBoard(player2Board.gameBoard);
         Player.registerPlayers();
-
         Player.setPlayerShips(player1Board, player2Board);
-
-        // Gameplay prompt
 
         //Create attack Board for each player
         Board p1Attack = new Board();
